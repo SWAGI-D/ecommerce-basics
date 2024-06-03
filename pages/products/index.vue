@@ -1,9 +1,14 @@
 <template>
     <div>
       <div class="grid grid-cols-4 gap-5">
-        <div v-for="product in products" :key="product.id">
-          <ProductCard :product="product"/>
-        </div>
+        <p v-if="pending">
+         Loading...
+        </p>
+        <template v-else>
+          <div v-for="product in products" :key="product.id">
+            <ProductCard :product="product"/>
+          </div>
+        </template>
       </div>
     </div>
 </template>
@@ -13,9 +18,14 @@
         layout: 'products'
     })
 
-    const { data: products } = await useFetch('https://fakestoreapi.com/products')
+    const {pending,  data: products } = await useLazyFetch('https://fakestoreapi.com/products')
 
 </script>
 
 <style scoped>
+.thumb {
+      max-height: 120px;
+      max-width: 70%;
+      margin: 0 auto;
+    }
 </style>

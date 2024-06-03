@@ -1,4 +1,5 @@
 <template>
+    <NuxtLoadingIndicator/>
     <div>
         <header class="shadow-sm bg-pink-800 text-white">
         <nav class="container mx-auto p-4 flex justify-between">
